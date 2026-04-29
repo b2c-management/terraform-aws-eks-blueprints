@@ -181,6 +181,7 @@ resource "aws_iam_role" "platform_team" {
   name                 = "${var.eks_cluster_id}-${each.key}-access"
   permissions_boundary = var.iam_role_permissions_boundary
   managed_policy_arns  = [aws_iam_policy.platform_team_eks_access[0].arn]
+  max_session_duration = 14400
 
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
